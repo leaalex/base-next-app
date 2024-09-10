@@ -12,12 +12,31 @@ RUN \
   else echo "Warning: Lockfile not found. It is recommended to commit lockfiles to version control." && yarn install; \
   fi
 
+
+
 COPY src ./src
 COPY public ./public
 COPY next.config.js .
 COPY tsconfig.json .
 COPY tailwind.config.ts .
 COPY postcss.config.js .
+
+ENV DATABASE_URL="file:../db/dev.db"
+
+
+
+COPY prisma ./prisma
+
+
+
+RUN npx prisma generate
+
+RUN npx npx prisma migrate dev --name init
+
+
+
+
+
 
 
 
