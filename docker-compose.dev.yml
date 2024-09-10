@@ -20,7 +20,7 @@ services:
     volumes:
       - ./next-app/src:/app/src
       - ./next-app/public:/app/public
-#      - ./next-app/db:/app/db # Монтируем локальную папку для хранения базы данных
+      - ./next-app/db:/app/db # Монтируем локальную папку для хранения базы данных
 
     restart: always
     ports:
